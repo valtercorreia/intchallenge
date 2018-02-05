@@ -123,6 +123,18 @@ public class CustomerDatabase {
         }
     }
 
+    /**
+     * Sorts the customer database by user id.
+     * It uses the SortCustomerByUserID comparator.
+     *
+     */
+    public void sortByUserID(){
+
+        if(customerDB != null){
+            customerDB.sort(new SortCustomerByUserID());
+        }
+    }
+
     public void addCustomerToDB(Customer customer){
         if(customerDB != null){
             customerDB.add(customer);

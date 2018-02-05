@@ -37,6 +37,35 @@ public class CustomerDatabaseTest {
     }
 
     @Test
+    public void sortByUserIDTest() {
+        CustomerDatabase cDB = new CustomerDatabase();
+        Customer customer1 = new Customer("Bond", 2, 53.74452,-7.11167);
+        Customer customer2 = new Customer("Anna", 1, 51.885616, -10.424095);
+
+        cDB.addCustomerToDB(customer1);
+        cDB.addCustomerToDB(customer2);
+
+        cDB.sortByUserID();
+
+        ArrayList<Customer> expected = new ArrayList<>();
+        expected.add(customer2);
+        expected.add(customer1);
+
+        assertEquals(expected, cDB.customerDB);
+    }
+
+    @Test
+    public void sortByUserIDEmptyTest() {
+        CustomerDatabase cDB = new CustomerDatabase();
+
+        cDB.sortByUserID();
+
+        ArrayList<Customer> expected = new ArrayList<>();
+
+        assertEquals(expected, cDB.customerDB);
+    }
+
+    @Test
     public void calculateGCDistanceTest() {
         double result = CustomerDatabase.calculateGreatCircleDistance(53.339428, -6.257664, 53.76139,-7.2875);
 
